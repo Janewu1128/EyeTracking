@@ -60,9 +60,7 @@ def capture_video(participant_id, video_name):
 # Example usage
 capture_video('Participant01', 'Video01')
 
-
-
-# # capture camera feed and desktop screen
+# # capture camera feed and desktop screen, not yet synchronize
 # import time
 # import cv2
 # from datetime import datetime
