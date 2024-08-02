@@ -1,10 +1,3 @@
-# import pyautogui
-
-# def capture_screen(frame_count, timestamp, screen_folder):
-#     screen = pyautogui.screenshot()
-#     screen_path = f"{screen_folder}/screen_{frame_count}_{timestamp}.png"
-#     screen.save(screen_path)
-
 import pyautogui
 from PIL import Image, ImageDraw
 
