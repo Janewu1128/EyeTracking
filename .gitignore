@@ -110,7 +110,10 @@ dmypy.json
 .vscode/
 
 # Video output files
-*.mp4
+video_output1.mp4
+camera_output1.mp4
+video_output.mp4
+camera_output.mp4
 *.avi
 
 # Log files

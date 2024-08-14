@@ -8,9 +8,9 @@ and without eye coordinates: python videoCapture.py
 
 Output:
 for python VC_EyeCoordinates.py two mp4 files are generated:
-video_output1.py frame by frame the captured video/screen state
-camera_output1.py frame by frame the captured face with eye movements state
+video_output1.mp4 frame by frame the captured video/screen state
+camera_output1.mp4 frame by frame the captured face with eye movements state
 
 for python videoCapture.py two mp4 files are generated:
-video_output.py frame by frame the captured video/screen state
-camera_output.py frame by frame the captured face state
+video_output.mp4 frame by frame the captured video/screen state
+camera_output.mp4 frame by frame the captured face state
