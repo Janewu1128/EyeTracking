@@ -60,6 +60,6 @@ def extract_eyes(input_image_path, output_folder):
     print(f"Extracted eyes for {len(all_eye_regions)} faces.")
 
 # Example usage
-input_image_path = 'output/test1.png'  # Path to the input image
+input_image_path = 'output/test.png'  # Path to the input image
 output_folder = 'output/eye_extract'  # Folder to store output images
 extract_eyes(input_image_path, output_folder)
