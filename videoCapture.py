@@ -1,5 +1,6 @@
 import cv2
 import time
+import os  # Import the os module for renaming
 
 # Desired FPS
 desired_fps = 30
@@ -16,9 +17,9 @@ frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 video_width = int(video_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 video_height = int(video_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-# Define codec and create VideoWriter objects for camera and video output (MP4)
+# Define codec and create VideoWriter objects for video output (MP4)
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out_camera = cv2.VideoWriter('camera_output.mp4', fourcc, desired_fps, (frame_width, frame_height))
+out_camera_temp = cv2.VideoWriter('temp_camera_output.mp4', fourcc, desired_fps, (frame_width, frame_height))
 out_video = cv2.VideoWriter('video_output.mp4', fourcc, desired_fps, (video_width, video_height))
 
 frame_count = 0
@@ -36,7 +37,7 @@ while True:
         break
 
     # Write frames to video files
-    out_camera.write(frame)
+    out_camera_temp.write(frame)
     out_video.write(video_frame)
 
     # Display frames
@@ -62,17 +63,27 @@ total_time = end_time_loop - start_time_loop
 fps_achieved = frame_count / total_time
 duration = total_time
 
+# Define the camera output filename with the achieved FPS
+camera_output_filename = f"camera_output{fps_achieved:.2f}.mp4"
+
+# Release the temporary file before renaming
+out_camera_temp.release()
+
+# Rename the temporary file to the new filename with FPS
+os.rename('temp_camera_output.mp4', camera_output_filename)
+
 # Write capture info to a file
 with open("capture_info.txt", "w") as f:
     f.write(f"Capture Duration: {duration:.2f} seconds\n")
     f.write(f"Frames per second achieved: {fps_achieved:.2f}\n")
+    f.write(f"Camera output saved as: {camera_output_filename}\n")
 
 # Print info to console (optional)
 print(f"Capture Duration: {duration:.2f} seconds")
 print(f"Frames per second achieved: {fps_achieved:.2f}")
+print(f"Camera output saved as: {camera_output_filename}")
 
 # Release resources
-out_camera.release()
 out_video.release()
 cap.release()
 video_cap.release()
