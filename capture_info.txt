@@ -1,0 +1,2 @@
+Capture Duration: 1.03 seconds
+Frames per second achieved: 0.00
