@@ -32,17 +32,22 @@ while True:
     ret, frame = cap.read()
     ret_video, video_frame = video_cap.read()
 
-    # Check if frames were captured successfully
-    if not ret or not ret_video:
-        break
+    # Check if video stream has ended
+    if not ret_video:
+        video_cap.set(cv2.CAP_PROP_POS_FRAMES, 0)  # Loop video playback
+        ret_video, video_frame = video_cap.read()
+
+    # If frame is not captured, continue to the next iteration
+    if not ret:
+        continue
 
     # Write frames to video files
     out_camera_temp.write(frame)
     out_video.write(video_frame)
 
-    # Display frames
-    cv2.imshow("Camera Frame", frame)
-    cv2.imshow("Video Frame", video_frame)
+    # Display frames (optional)
+    # cv2.imshow("Camera Frame", frame)
+    # cv2.imshow("Video Frame", video_frame)
 
     frame_count += 1
 

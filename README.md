@@ -1,3 +1,5 @@
+run: python screen_camera_capture.py
+
 # EyeTracking
 As of now, it opens dummy.mp4 as a screen capture video file and camera to start capturing.
 
